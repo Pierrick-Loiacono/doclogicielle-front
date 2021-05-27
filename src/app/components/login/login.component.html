@@ -1,0 +1,36 @@
+<div class="colums is-mobile is-centered">
+  <div class="column is-half is-offset-one-quarter">
+    <h1 class="title is-2">Connexion au système FormaBois</h1>
+    <div class="field">
+      <label class="label">Adresse mail :</label>
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" type="email" [(ngModel)]="mail_input">
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span *ngIf="mail_input" class="icon is-small is-right is-success">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Mot de passe :</label>
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" type="password" [(ngModel)]="pwd_input">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+        <span *ngIf="pwd_input" class="icon is-small is-right is-success">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" (click)="submitForm()">Connexion</button>
+      </div>
+    </div>
+  </div>
+</div>
