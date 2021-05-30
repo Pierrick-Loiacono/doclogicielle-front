@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Product } from "../interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,13 @@ export class ProductService {
    * @returns {Observable<Array<Product>>>} the list of concerned products
    */
   getProduct(id?: number) {
-    const url = id ? this.url : `${this.url}/${id}`
-    return this.http.get<Observable<Array<Product>>>(url);
+    const url = id ?  `${this.url}/product/${id}` : `${this.url}/product`;
+    console.log(url)
+    console.log(this.http.get<Observable<Array<Product>>>(url,{ headers: new HttpHeaders({ 'user-id': `1`})}))
+    return this.http.get<Observable<Array<Product>>>(url,{ headers: new HttpHeaders({ 'user-id': `1`})});
   }
 
-  postProduct(product: NewProduct) {
+  postProduct(product: Product) {
     return this.http.post(this.url, product)
   }
 }

@@ -19,6 +19,8 @@ import { DeleteUserComponent } from './components/delete-user/delete-user.compon
 import { ChantierEnCoursComponent } from './components/chantier-en-cours/chantier-en-cours.component';
 import { StatistiquesComponent } from './components/statistiques/statistiques.component';
 import { StockComponent } from './components/stock/stock.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { StockComponent } from './components/stock/stock.component';
     DeleteUserComponent,
     ChantierEnCoursComponent,
     StatistiquesComponent,
-    StockComponent
+    StockComponent,
+    ProductsComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

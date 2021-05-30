@@ -1,1 +1,30 @@
-<p>update-product works!</p>
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <div>
+        <h2> Modification du produit {{designation_input}}</h2>
+        <div class="mb-3">
+          <label for="designationProduct" class="form-label">Nom du produit</label>
+          <input type="text" class="form-control" id="designationProduct" [(ngModel)]="designation_input">
+        </div>
+
+        <div class="mb-3">
+          <label for="priceProduct" class="form-label">Prix</label>
+          <input type="text" class="form-control" id="priceProduct" [(ngModel)]="price_input">
+        </div>
+
+        <div class="mb-3">
+          <label for="quantityProduct" class="form-label">Prix</label>
+          <input type="text" class="form-control" id="quantityProduct" [(ngModel)]="quantity_input">
+        </div>
+
+        <div class="mb-3">
+          <label for="providerProduct" class="form-label">Prix</label>
+          <input type="text" class="form-control" id="providerProduct" [(ngModel)]="provider_input">
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="submitForm()"> Connexion</button>
+      </div>
+    </div>
+  </div>
+</div>
