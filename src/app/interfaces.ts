@@ -19,7 +19,7 @@ enum CONSTRUCTION_STEPS {
 /**
  * Interface for users
  */
-interface User {
+export interface User {
   id: number
   firstName: string
   lastName: string
@@ -31,7 +31,7 @@ interface User {
 /**
  * Interface for suppliers
  */
-interface Provider {
+export interface Provider {
   id: number
   firmName: string
   address: string
@@ -41,7 +41,7 @@ interface Provider {
 /**
  * Interface for products
  */
-interface Product {
+export interface Product {
   id: number
   designation: string
   price: number
@@ -52,7 +52,7 @@ interface Product {
 /**
  * Interface for constructions
  */
-interface Construction {
+export interface Construction {
   id: number
   products: Map<Product, number>
   price: number

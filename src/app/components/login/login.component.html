@@ -1,35 +1,20 @@
-<div class="colums is-mobile is-centered">
-  <div class="column is-half is-offset-one-quarter">
-    <h1 class="title is-2">Connexion au système FormaBois</h1>
-    <div class="field">
-      <label class="label">Adresse mail :</label>
-      <div class="control has-icons-left has-icons-right">
-        <input class="input" type="email" [(ngModel)]="mail_input">
-        <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-        </span>
-        <span *ngIf="mail_input" class="icon is-small is-right is-success">
-          <i class="fas fa-check"></i>
-        </span>
-      </div>
-    </div>
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <div>
+        <h2> Connexion au système Formabois</h2>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="mail_input">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
 
-    <div class="field">
-      <label class="label">Mot de passe :</label>
-      <div class="control has-icons-left has-icons-right">
-        <input class="input" type="password" [(ngModel)]="pwd_input">
-        <span class="icon is-small is-left">
-          <i class="fas fa-lock"></i>
-        </span>
-        <span *ngIf="pwd_input" class="icon is-small is-right is-success">
-          <i class="fas fa-check"></i>
-        </span>
-      </div>
-    </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="pwd_input">
+        </div>
 
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button is-link" (click)="submitForm()">Connexion</button>
+        <button type="submit" class="btn btn-primary" (click)="submitForm()"> Connexion</button>
       </div>
     </div>
   </div>

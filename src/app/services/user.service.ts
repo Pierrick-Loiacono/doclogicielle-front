@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/interfaces'
 
 @Injectable({
   providedIn: 'root'
@@ -26,27 +26,16 @@ export class UserService {
    * @returns
    */
   login(mail: string, password: string) {
-    return this.http.post<{token: string | null}>(`${this.url}/login`, {mail: mail, password: password});
+    return this.http.post<{id: number, usertype: string}>(`${this.url}/authentication/login`, {mail: mail, password: password});
   }
 
   /**
    * Send a request to check if user is connected (return the user if not)
-   * @returns current user
+   * @returns {Observable<User>} current user
    */
   me() {
-    const token = localStorage.getItem("token");
-
-    let user = {};
-
-    this.http.get(
-      `${this.url}/user/me`,
-      { headers: new HttpHeaders({ 'Authorization': `Bearer ${token}`})}
-    ).subscribe(
-      user => user = user,
-      err => console.error(err)
-    );
-
-    return user;
+    const user_id = localStorage.getItem("user_id");
+    return this.http.get<User>(`${this.url}/user/me`,{ headers: new HttpHeaders({ 'user-id': `${user_id}`})})
   }
 
 }
