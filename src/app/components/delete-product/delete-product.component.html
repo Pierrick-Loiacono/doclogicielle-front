@@ -1,1 +1,27 @@
-<p>delete-product works!</p>
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Désignation</td>
+          <td>Prix</td>
+          <td>Quantité</td>
+          <td>Fournisseur</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.designation }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.provider.firmName }}</td>
+          <td (click)="delete(product.id)"><i class="fas fa-trash"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alert alert-success" *ngIf="success.length > 0">
+      {{success}}
+    </div>
+  </div>
+</div>

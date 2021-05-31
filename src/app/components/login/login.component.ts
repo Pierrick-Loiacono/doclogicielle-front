@@ -33,6 +33,12 @@ export class LoginComponent implements OnInit {
 
           localStorage.setItem("user_id", data.id.toString() || "0");
           localStorage.setItem("usertype", data.usertype || "");
+          if(data.usertype === "ADMIN") {
+            this.us.getLastNotif().subscribe(
+              notifs => localStorage.setItem("notif", notifs.content),
+              err => console.error(err)
+            );
+          }
           this.router.navigateByUrl("/home?reload")
 
         } else {

@@ -1,1 +1,39 @@
-<p>update-provider works!</p>
+<div class="container">
+  <div class="row">
+    <div class="d-flex m-2 p-3 text-center" style="background-color: #F8F9FA; border: solid black 1px">
+      <div class="col">Société</div>
+      <div class="col">Adresse</div>
+      <div class="col">Téléphone</div>
+      <div class="col">Modifier</div>
+    </div>
+    <div *ngFor="let p of providers" class="d-flex flex-column m-2">
+      <div class="d-flex row">
+        <div class="col">{{ p.firmName }}</div>
+        <div class="col">{{ p.address }}</div>
+        <div class="col">{{ p.phone }}</div>
+        <div class="col" (click)="showModifyForm(p.id)"><i class="fas fa-pen"></i></div>
+      </div>
+      <div [id]="'form-' + p.id" style="display: none;" class="py-5">
+        <div>
+          <h4 class="text-center"> Modification du fournisseur</h4>
+          <div class="mb-3">
+            <label for="designationProduct" class="form-label">Nom de société :</label>
+            <input type="text" class="form-control" id="designationProduct" [(ngModel)]="p.firmName">
+          </div>
+
+          <div class="mb-3">
+            <label for="priceProduct" class="form-label">Adresse :</label>
+            <input type="text" class="form-control" id="priceProduct" [(ngModel)]="p.address">
+          </div>
+
+          <div class="mb-3">
+            <label for="quantityProduct" class="form-label">Téléphone :</label>
+            <input type="text" class="form-control" id="quantityProduct" [(ngModel)]="p.phone">
+          </div>
+
+          <button type="submit" class="btn btn-primary" (click)="submitForm(p.id)"> Modifier le produit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

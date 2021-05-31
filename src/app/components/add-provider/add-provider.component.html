@@ -1,1 +1,31 @@
-<p>add-provider works!</p>
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <div>
+        <h2> Ajouter un fournisseur</h2>
+
+        <div class="mb-3">
+          <label for="exampleInputNom1" class="form-label">Société :</label>
+          <input type="text" class="form-control" id="exampleInputNom1" [(ngModel)]="newProvider.firmName">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Adresse :</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="newProvider.address">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputMail1" class="form-label">Téléphone: </label>
+          <input type="text" class="form-control" id="exampleInputMail1" [(ngModel)]="newProvider.phone">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" (click)="createProvider()"> Connexion</button>
+
+        <div class="alert alert-success" *ngIf="success.length > 0">
+          {{ success }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

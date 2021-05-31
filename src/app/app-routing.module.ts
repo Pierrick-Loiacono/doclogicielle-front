@@ -13,14 +13,11 @@ import { StatistiquesComponent } from './components/statistiques/statistiques.co
 import { StockComponent } from './components/stock/stock.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { UpdateProviderComponent } from './components/update-provider/update-provider.component';
-import {ProductsComponent} from "./components/products/products.component";
-import {ProductComponent} from "./components/product/product.component";
+
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "home", component: HomeComponent },
-  { path: "product/:id", component: ProductComponent },
-  { path: "products", component: ProductsComponent },
   { path: "addProduct", component: AddProductComponent },
   { path: "deleteProduct", component: DeleteProductComponent },
   { path: "updateProduct", component: UpdateProductComponent },

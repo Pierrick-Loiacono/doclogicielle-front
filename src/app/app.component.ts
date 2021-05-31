@@ -1,6 +1,5 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +8,24 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor(public location: Location) { }
 
   usertype: string = ""
 
+  notif: string = "";
+
   ngOnInit(): void {
 
-    console.log(localStorage.getItem("usertype"))
     if(this.location.path() !== "/login") {
       // check if a usertype is set
-
       this.usertype = localStorage.getItem("usertype") || "";
     }
+
+    this.notif = localStorage.getItem("notif") || "";
   }
 
+  showAlert() {
+    const alert = localStorage.getItem("notif");
+    if(alert) window.alert(alert);
+  }
 }

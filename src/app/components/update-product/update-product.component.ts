@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../../interfaces";
-import {Router} from "@angular/router";
-import {ProductService} from "../../services/product.service";
+import { Product } from 'src/app/interfaces';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-update-product',
@@ -10,26 +9,46 @@ import {ProductService} from "../../services/product.service";
 })
 export class UpdateProductComponent implements OnInit {
 
-  product: Product | undefined;
+  products: Array<Product> = []
+  usertype: string = ""
 
-  designation_input: string = "";
-  price_input: string = "";
-  quantity_input: string = "";
-  provider_input: string = "";
-  error: string = "";
-
-  constructor(private router: Router, private us: ProductService) { }
+  constructor(private ps: ProductService) { }
 
   ngOnInit(): void {
-    this.getProduct();
+    this.ps.getProduct().subscribe(
+      data => this.products = data,
+      err => console.error(err)
+    );
+    this.usertype = localStorage.getItem("usertype") || ""
   }
 
-  getProduct(): void {
-    this.us.getProduct(1)
-      .subscribe(product => this.product);
+  /**
+   * Affiche le formulaire avec l'id passé en parametre
+   * @param id l'id à afficher
+   */
+  showModifyForm(id: number) {
+    const element = document.getElementById(`form-${id}`)
+
+    if(!element) return
+
+    if(element.style.display === "none")
+      element.style.display = "block"
+    else
+      element.style.display = "none"
   }
 
-  submitForm() {
-  }
+  /**
+   * Modifie un produit
+   * @param id l'id du produit
+   */
+  submitForm(id: number) {
+    const product = this.products.find(p => p.id == id);
 
+    if(product) {
+      this.ps.putProduct(product).subscribe(
+        data=> console.log(data),
+        err => console.log(err)
+      );
+    }
+  }
 }

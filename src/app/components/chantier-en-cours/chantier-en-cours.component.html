@@ -1,1 +1,29 @@
-<p>chantier-en-cours works!</p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div
+      *ngFor="let step of steps"
+      class="m-3 p-3"
+      style="background-color: #f8f9fa;"
+      (click)="current_key = step.key"
+      [style.backgroundColor]="current_key == step.key ? 'black' : '#f8f9fa'"
+      [style.color]="current_key == step.key ? 'white' : 'black'"
+      >
+        {{ step.value }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="d-flex flex-column" *ngFor="let c of constructions | ConstructionFilter:current_key">
+      <div class="d-flex align-items-center justify-content-center">
+        <img src="assets/generic_construction.jpeg" width="100px" class="img-fluid mx-2">
+        <div class="mx-4">Prix: {{ c.price }}</div>
+        <div (click)="showDetails(c.id)" class="mx-2">Produits: <i class="fas fa-info-circle"></i></div>
+      </div>
+
+      <div [id]="'detail-' + c.id" style="display: none;">
+        <div [innerHTML]="beautify(c.products)"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

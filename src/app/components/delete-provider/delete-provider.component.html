@@ -1,1 +1,25 @@
-<p>delete-provider works!</p>
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Nom de société</td>
+          <td>Adresse</td>
+          <td>Téléphone</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let provider of providers">
+          <td>{{ provider.firmName }}</td>
+          <td>{{ provider.address }}</td>
+          <td>{{ provider.phone }}</td>
+          <td (click)="delete(provider.id)"><i class="fas fa-trash"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alert alert-success" *ngIf="success.length > 0">
+      {{success}}
+    </div>
+  </div>
+</div>

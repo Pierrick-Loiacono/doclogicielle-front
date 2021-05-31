@@ -9,7 +9,7 @@ enum USERTYPE {
 /**
  * Enum for the state of a construction
  */
-enum CONSTRUCTION_STEPS {
+export enum CONSTRUCTION_STEPS {
   WAITING = "WAITING",
   IN_PROGRESS = "IN_PROGRESS",
   FINISHED = "FINISHED",
@@ -39,6 +39,15 @@ export interface Provider {
 }
 
 /**
+ * Interface for suppliers
+ */
+ export interface NewProvider {
+  firmName: string
+  address: string
+  phone: string
+}
+
+/**
  * Interface for products
  */
 export interface Product {
@@ -58,7 +67,6 @@ export interface Construction {
   price: number
   state: CONSTRUCTION_STEPS
 }
-
 
 class NewProduct {
   designation: string

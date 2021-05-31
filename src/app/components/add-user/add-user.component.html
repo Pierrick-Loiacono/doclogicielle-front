@@ -1,1 +1,40 @@
-<p>add-user works!</p>
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <div>
+        <h2> Ajouter un utilisateur</h2>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Prénom</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="firstName">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputNom1" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="exampleInputNom1" [(ngModel)]="lastName">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputMail1" class="form-label">Email: </label>
+          <input type="text" class="form-control" id="exampleInputMail1" [(ngModel)]="email">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Mot de passe: </label>
+          <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="pwd">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputUsertype1" class="form-label">Usertype (A = ADMIN | U = USER): </label>
+          <input type="text" class="form-control" id="exampleInputUsertype1" [(ngModel)]="usertype">
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="createUser()"> Connexion</button>
+
+        <div class="alert alert-success" *ngIf="success.length > 0">
+          {{ success }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

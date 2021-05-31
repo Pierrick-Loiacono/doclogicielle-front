@@ -1,29 +1,40 @@
 <div class="container">
   <div class="row">
-    <div class="d-flex justify-content-center">
-      <div>
-        <h2> Modification du produit {{designation_input}}</h2>
-        <div class="mb-3">
-          <label for="designationProduct" class="form-label">Nom du produit</label>
-          <input type="text" class="form-control" id="designationProduct" [(ngModel)]="designation_input">
-        </div>
+    <div class="d-flex m-2 p-3 text-center" style="background-color: #F8F9FA; border: solid black 1px">
+      <div class="col">Designation</div>
+      <div class="col">Prix</div>
+      <div class="col">Quantité</div>
+      <div class="col">Fournisseur</div>
+      <div *ngIf="usertype == 'ADMIN'" class="col">Modifier</div>
+    </div>
+    <div *ngFor="let p of products" class="d-flex flex-column m-2">
+      <div class="d-flex row text-center">
+        <div class="col">{{ p.designation }}</div>
+        <div class="col">{{ p.price }}</div>
+        <div class="col">{{ p.quantity }}</div>
+        <div class="col">{{ p.provider.firmName }}</div>
+        <div *ngIf="usertype == 'ADMIN'" class="col" (click)="showModifyForm(p.id)"><i class="fas fa-pen"></i></div>
+      </div>
+      <div [id]="'form-' + p.id" style="display: none;" class="py-5">
+        <div>
+          <h4 class="text-center"> Modification du produit</h4>
+          <div class="mb-3">
+            <label for="designationProduct" class="form-label">Nom du produit :</label>
+            <input type="text" class="form-control" id="designationProduct" [(ngModel)]="p.designation">
+          </div>
 
-        <div class="mb-3">
-          <label for="priceProduct" class="form-label">Prix</label>
-          <input type="text" class="form-control" id="priceProduct" [(ngModel)]="price_input">
-        </div>
+          <div class="mb-3">
+            <label for="priceProduct" class="form-label">Prix :</label>
+            <input type="text" class="form-control" id="priceProduct" [(ngModel)]="p.price">
+          </div>
 
-        <div class="mb-3">
-          <label for="quantityProduct" class="form-label">Prix</label>
-          <input type="text" class="form-control" id="quantityProduct" [(ngModel)]="quantity_input">
-        </div>
+          <div class="mb-3">
+            <label for="quantityProduct" class="form-label">Quantité :</label>
+            <input type="text" class="form-control" id="quantityProduct" [(ngModel)]="p.quantity">
+          </div>
 
-        <div class="mb-3">
-          <label for="providerProduct" class="form-label">Prix</label>
-          <input type="text" class="form-control" id="providerProduct" [(ngModel)]="provider_input">
+          <button type="submit" class="btn btn-primary" (click)="submitForm(p.id)"> Modifier le produit</button>
         </div>
-
-        <button type="submit" class="btn btn-primary" (click)="submitForm()"> Connexion</button>
       </div>
     </div>
   </div>

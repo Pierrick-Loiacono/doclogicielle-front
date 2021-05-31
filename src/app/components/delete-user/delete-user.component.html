@@ -1,1 +1,27 @@
-<p>delete-user works!</p>
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Prénom</td>
+          <td>Nom</td>
+          <td>Email</td>
+          <td>Usertype</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.mail }}</td>
+          <td>{{ user.usertype }}</td>
+          <td (click)="delete(user.id)"><i class="fas fa-trash"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alert alert-success" *ngIf="success.length > 0">
+      {{success}}
+    </div>
+  </div>
+</div>
